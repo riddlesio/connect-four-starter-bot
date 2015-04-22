@@ -49,7 +49,7 @@ public class MyBot {
     }
     
     private int calculateMove() {
-    	return new Random().nextInt(mColumns+2); /* Returns random column */
+    	return new Random().nextInt(mColumns); /* Returns random column */
     }
 
     public static void main(String[] args) {
