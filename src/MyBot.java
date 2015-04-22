@@ -35,7 +35,6 @@ public class MyBot {
             	if (parts[1].equals("field")) { /* new board data */
             		mField.fillBoard(parts[3]);
             		//mField.dumpBoard();
-            		System.out.println(parts[3]);
             	}
             } else if(parts[0].equals("action")) {
             	if (parts[1].equals("move")) { /* move requested */
