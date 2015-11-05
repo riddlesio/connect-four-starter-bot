@@ -18,14 +18,15 @@
 import java.util.Random;
 
 /**
- * Ai class
+ * BotStarter class
  * 
- * Magic happens here.
+ * Magic happens here. You should edit this file, or more specifically
+ * the makeTurn() method to make your bot do more than random moves.
  * 
- * @author Jim van Eeden <jim@starapple.nl>
+ * @author Jim van Eeden <jim@starapple.nl>, Joost de Meij <joost@starapple.nl>
  */
 
-public class Ai {	
+public class BotStarter {	
      Field field;
 
      /**
@@ -33,12 +34,12 @@ public class Ai {
       *
       * @param Field field, int player
       */
-     public Ai(Field field, int player) {
+     public BotStarter(Field field, int player) {
          this.field = field;
      }
 
      /**
-      * Makes a turn.
+      * Makes a turn. Edit this method to make your bot smarter.
       *
       * @return The column where the turn was made.
       */

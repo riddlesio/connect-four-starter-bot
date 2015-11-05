@@ -15,17 +15,12 @@
 //    For the full copyright and license information, please view the LICENSE
 //    file that was distributed with this source code.
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
-
 /**
  * Field class
  * 
  * Field class that contains the field status data and various helper functions.
  * 
- * @author Jim van Eeden <jim@starapple.nl>
+ * @author Jim van Eeden <jim@starapple.nl>, Joost de Meij <joost@starapple.nl>
  */
 
 public class Field {	

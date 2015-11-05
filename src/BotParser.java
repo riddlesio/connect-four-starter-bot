@@ -11,14 +11,10 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-//	
+//  
 //    For the full copyright and license information, please view the LICENSE
 //    file that was distributed with this source code.
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintStream;
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -27,19 +23,18 @@ import java.util.Scanner;
  * Main class that will keep reading output from the engine.
  * Will either update the bot state or get actions.
  * 
- * @author Jim van Eeden <jim@starapple.nl>
+ * @author Jim van Eeden <jim@starapple.nl>, Joost de Meij <joost@starapple.nl>
  */
 
-public class MyBot {
-	
+public class BotParser {
+    
     private Scanner scan = new Scanner(System.in);
     private int mColumns = 7, mRows = 6;
     private Field mField;
-    private int mLast = 0;
     public static int mBotId = 0;
 
     public void run() {
-    	mField = new Field(mColumns, mRows);
+        mField = new Field(mColumns, mRows);
         while(scan.hasNextLine()) {
             String line = scan.nextLine();
 
@@ -50,40 +45,40 @@ public class MyBot {
             String[] parts = line.split(" ");
             
             if(parts[0].equals("settings")) {
-            	if (parts[1].equals("field_columns")) {
-            		mColumns = Integer.parseInt(parts[2]);
-            	}
-            	if (parts[1].equals("field_rows")) {
-            		mRows = Integer.parseInt(parts[2]);
-            	}
-            	if (parts[1].equals("your_botid")) {
-            		mBotId = Integer.parseInt(parts[2]);
-            	}
+                if (parts[1].equals("field_columns")) {
+                    mColumns = Integer.parseInt(parts[2]);
+                }
+                if (parts[1].equals("field_rows")) {
+                    mRows = Integer.parseInt(parts[2]);
+                }
+                if (parts[1].equals("your_botid")) {
+                    mBotId = Integer.parseInt(parts[2]);
+                }
             } else if(parts[0].equals("update")) { /* new field data */
-            	if (parts[2].equals("field")) {
-	            	String data = parts[3];
-	            	mField = new Field(mColumns, mRows);
-	            	mField.parseFromString(data); /* Parse Field with data */
-            	}
+                if (parts[2].equals("field")) {
+                    String data = parts[3];
+                    mField = new Field(mColumns, mRows);
+                    mField.parseFromString(data); /* Parse Field with data */
+                }
             } else if(parts[0].equals("action")) {
-            	if (parts[1].equals("move")) { /* move requested */
-            		int column = calculateMove();
-            		System.out.println("place_disc " + column);
-            	}
+                if (parts[1].equals("move")) { /* move requested */
+                    int column = calculateMove();
+                    System.out.println("place_disc " + column);
+                }
             }
             else { 
-            	System.out.println("unknown command");
+                System.out.println("unknown command");
             }
         }
     }
     
     private int calculateMove() {
-    	Ai a = new Ai(mField, mBotId);
-    	int move = a.makeTurn();
-    	return move;
+        BotStarter a = new BotStarter(mField, mBotId);
+        int move = a.makeTurn();
+        return move;
     }
 
     public static void main(String[] args) {
-        (new MyBot()).run();
+        (new BotParser()).run();
     }
 }
