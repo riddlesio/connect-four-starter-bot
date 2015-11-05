@@ -36,27 +36,32 @@ public class Field {
 		clearBoard();
 	}
 	
+	/**
+	 * Sets the number of columns (this clears the board)
+	 * @param args : int cols
+	 */
+	public void setColumns(int cols) {
+		mCols = cols;
+		mBoard = new int[mCols][mRows];
+	}
+
+	/**
+	 * Sets the number of rows (this clears the board)
+	 * @param args : int rows
+	 */
+	public void setRows(int rows) {
+		mRows = rows;
+		mBoard = new int[mCols][mRows];
+	}
+
+	/**
+	 * Clear the board
+	 */
 	public void clearBoard() {
 		for (int x = 0; x < mCols; x++) {
 			for (int y = 0; y < mRows; y++) {
 				mBoard[x][y] = 0;
 			}
-		}
-	}
-	
-	public void dumpBoard() {
-		for (int x = 0; x < mCols; x++) {
-			System.out.print("--");
-		}
-		System.out.print("\n");
-		for (int y = 0; y < mRows; y++) {
-			for (int x = 0; x < mCols; x++) {
-				System.out.print(mBoard[x][y]);
-				if (x < mCols-1) {
-					System.out.print(",");
-				}
-			}
-			System.out.print("\n");
 		}
 	}
 	
@@ -179,101 +184,5 @@ public class Field {
 	 */
 	public int getNrRows() {
 		return mRows;
-	}
-	
-	private final int INAROW = 4;
-	/**
-	 * Checks if there is a winner, if so, returns player id.
-	 * @param args : 
-	 * @return : Returns player id if there is a winner, otherwise returns 0.
-	 */
-	public int getWinner() {
-		/* Check for horizontal wins */
-		for (int x = 0; x < mCols; x++) {
-			for (int y = 0; y < mRows; y++) {
-				int n = mBoard[x][y];
-				Boolean win = true;
-				if (n != 0) {
-					for (int i = 0; i < INAROW; i++) {
-						if (x + i < mCols) {
-							if (n != (mBoard[x + i][y])) {
-								win = false;
-							}
-						} else {
-							win = false;
-						}
-					}
-					if (win) {
-						return n;
-					}
-				}
-			}
-		}
-		
-		/* Check for vertical wins */
-		for (int x = 0; x < mCols; x++) {
-			for (int y = 0; y < mRows; y++) {
-				int n = mBoard[x][y];
-				Boolean win = true;
-				if (n != 0) {
-					for (int i = 0; i < INAROW; i++) {
-						if (y + i < mRows) {
-							if (n != mBoard[x][y + i]) {
-								win = false;
-							}
-						} else {
-							win = false;
-						}
-					}
-					if (win) {
-						return n;
-					}
-				}
-			}
-		}
-		
-		/* Check for diagonal wins */
-		for (int x = 0; x < mCols; x++) {
-			for (int y = 0; y < mRows; y++) {
-				int n = mBoard[x][y];
-				Boolean win = true;
-				if (n != 0) {
-					for (int i = 0; i < INAROW; i++) {
-						if (x - i >= 0 && y + i < mRows) {
-							if (n !=mBoard[x - i][y + i]) {
-								win = false;
-							}
-						} else {
-							win = false;
-						}
-					}
-					if (win) {
-						return n;
-					}
-				}
-			}
-		}
-		/* Check for anti diagonal wins */
-		for (int x = 0; x < mCols; x++) {
-			for (int y = 0; y < mRows; y++) {
-				int n = mBoard[x][y];
-				Boolean win = true;
-				if (n != 0) {
-					for (int i = 0; i < INAROW; i++) {
-						if (x + i < mCols && y + i < mRows) {
-							if (n != mBoard[x + i][y + i]) {
-								win = false;
-							}
-						} else {
-							win = false;
-						}
-					}
-					if (win) {
-						return n;
-					}
-				}
-			}
-		}
-		return 0;
 	}
 }

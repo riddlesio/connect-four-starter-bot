@@ -29,12 +29,11 @@ import java.util.Scanner;
 public class BotParser {
     
     private Scanner scan = new Scanner(System.in);
-    private int mColumns = 7, mRows = 6;
     private Field mField;
     public static int mBotId = 0;
 
     public void run() {
-        mField = new Field(mColumns, mRows);
+        mField = new Field(0, 0);
         while(scan.hasNextLine()) {
             String line = scan.nextLine();
 
@@ -46,10 +45,10 @@ public class BotParser {
             
             if(parts[0].equals("settings")) {
                 if (parts[1].equals("field_columns")) {
-                    mColumns = Integer.parseInt(parts[2]);
+                    mField.setColumns(Integer.parseInt(parts[2]));
                 }
                 if (parts[1].equals("field_rows")) {
-                    mRows = Integer.parseInt(parts[2]);
+                    mField.setRows(Integer.parseInt(parts[2]));
                 }
                 if (parts[1].equals("your_botid")) {
                     mBotId = Integer.parseInt(parts[2]);
@@ -57,7 +56,6 @@ public class BotParser {
             } else if(parts[0].equals("update")) { /* new field data */
                 if (parts[2].equals("field")) {
                     String data = parts[3];
-                    mField = new Field(mColumns, mRows);
                     mField.parseFromString(data); /* Parse Field with data */
                 }
             } else if(parts[0].equals("action")) {
