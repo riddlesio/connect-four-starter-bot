@@ -15,6 +15,8 @@
 //    For the full copyright and license information, please view the LICENSE
 //    file that was distributed with this source code.
 
+package bot;
+import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -28,10 +30,18 @@ import java.util.Scanner;
 
 public class BotParser {
     
-    private Scanner scan = new Scanner(System.in);
+	final Scanner scan;
+    final BotStarter bot;
+    
     private Field mField;
     public static int mBotId = 0;
 
+    
+    public BotParser(BotStarter bot) {
+		this.scan = new Scanner(System.in);
+		this.bot = bot;
+	}
+    
     public void run() {
         mField = new Field(0, 0);
         while(scan.hasNextLine()) {
@@ -71,12 +81,9 @@ public class BotParser {
     }
     
     private int calculateMove() {
-        BotStarter a = new BotStarter(mField, mBotId);
-        int move = a.makeTurn();
+        int move = 0;
+        Random r = new Random();
+        move = r.nextInt(mField.getNrColumns());
         return move;
-    }
-
-    public static void main(String[] args) {
-        (new BotParser()).run();
     }
 }

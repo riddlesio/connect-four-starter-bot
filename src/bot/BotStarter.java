@@ -1,4 +1,4 @@
-// Copyright 2015 theaigames.com (developers@theaigames.com)
+// // Copyright 2015 theaigames.com (developers@theaigames.com)
 
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -15,6 +15,7 @@
 //    For the full copyright and license information, please view the LICENSE
 //    file that was distributed with this source code.
 
+package bot;
 import java.util.Random;
 
 /**
@@ -30,15 +31,6 @@ public class BotStarter {
      Field field;
 
      /**
-      * Constructor.
-      *
-      * @param Field field, int player
-      */
-     public BotStarter(Field field, int player) {
-         this.field = field;
-     }
-
-     /**
       * Makes a turn. Edit this method to make your bot smarter.
       *
       * @return The column where the turn was made.
@@ -47,4 +39,10 @@ public class BotStarter {
          int move = new Random().nextInt(7);     
          return move;
      }
+     
+ 	public static void main(String[] args) {
+ 		BotParser parser = new BotParser(new BotStarter());
+ 		parser.run();
+ 	}
+ 	
  }
