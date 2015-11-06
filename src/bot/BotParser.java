@@ -70,7 +70,7 @@ public class BotParser {
                 }
             } else if(parts[0].equals("action")) {
                 if (parts[1].equals("move")) { /* move requested */
-                    int column = calculateMove();
+                    int column = bot.makeTurn();
                     System.out.println("place_disc " + column);
                 }
             }
@@ -78,12 +78,5 @@ public class BotParser {
                 System.out.println("unknown command");
             }
         }
-    }
-    
-    private int calculateMove() {
-        int move = 0;
-        Random r = new Random();
-        move = r.nextInt(mField.getNrColumns());
-        return move;
     }
 }
