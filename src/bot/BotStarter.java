@@ -1,4 +1,4 @@
-// // Copyright 2015 theaigames.com (developers@theaigames.com)
+// // Copyright 2016 riddles.io (developers@riddles.io)
 
 //    Licensed under the Apache License, Version 2.0 (the "License");
 //    you may not use this file except in compliance with the License.
@@ -11,38 +11,45 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-//	
+//
 //    For the full copyright and license information, please view the LICENSE
 //    file that was distributed with this source code.
 
 package bot;
+
 import java.util.Random;
 
+import move.Move;
+
 /**
- * BotStarter class
+ * bot.BotStarter
  * 
  * Magic happens here. You should edit this file, or more specifically
  * the makeTurn() method to make your bot do more than random moves.
  * 
- * @author Jim van Eeden <jim@starapple.nl>, Joost de Meij <joost@starapple.nl>
+ * @author Jim van Eeden <jim@riddles.io>
  */
 
-public class BotStarter {	
-     Field field;
+public class BotStarter {
 
-     /**
-      * Makes a turn. Edit this method to make your bot smarter.
-      *
-      * @return The column where the turn was made.
-      */
-     public int makeTurn() {
-         int move = new Random().nextInt(7);     
-         return move;
-     }
-     
+	/**
+     * doMove thinks up a move. Edit this method to make your bot smarter.
+     *
+     * @return a Move object
+     */
+    public Move doMove(BotState state) {
+    	int column = new Random().nextInt(state.getField().getWidth());
+
+		return new Move(column);
+    }
+    
+	/**
+     * Main method for the bot. Creates a parser and runs it. 
+     *
+     * @return a Move object
+     */
  	public static void main(String[] args) {
  		BotParser parser = new BotParser(new BotStarter());
  		parser.run();
  	}
- 	
  }
