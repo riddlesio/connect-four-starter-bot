@@ -32,7 +32,8 @@ public class Field {
     private int width = 7;
     private int height = 6;
     
-    private int[][] field;
+    private String[][] field;
+    public final String EMPTYFIELD = ".";
     
     public Field() {}
 
@@ -42,7 +43,7 @@ public class Field {
      */
     public void initField() throws Exception {
         try {
-            this.field = new int[this.width][this.height];
+            this.field = new String[this.width][this.height];
         } catch (Exception e) {
             throw new Exception("Error: trying to initialize field while field "
                     + "settings have not been parsed yet.");
@@ -56,7 +57,7 @@ public class Field {
     public void clearField() {
         for (int y = 0; y < this.height; y++)
             for (int x = 0; x < this.width; x++)
-                this.field[x][y] = 0;
+                this.field[x][y] = EMPTYFIELD;
     }
 
     /**
@@ -71,7 +72,7 @@ public class Field {
         int y = 0;
 
         for (String value : split) {
-            this.field[x][y] = Integer.parseInt(value);
+            this.field[x][y] = value;
                             
             if (++x == this.width) {
                 x = 0;
