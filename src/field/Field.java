@@ -1,21 +1,24 @@
-// Copyright 2015 theaigames.com (developers@theaigames.com)
+/*
+ * Copyright 2016 riddles.io (developers@riddles.io)
+ *
+ *     Licensed under the Apache License, Version 2.0 (the "License");
+ *     you may not use this file except in compliance with the License.
+ *     You may obtain a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *     Unless required by applicable law or agreed to in writing, software
+ *     distributed under the License is distributed on an "AS IS" BASIS,
+ *     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *     See the License for the specific language governing permissions and
+ *     limitations under the License.
+ *
+ *     For the full copyright and license information, please view the LICENSE
+ *     file that was distributed with this source code.
+ */
 
-//    Licensed under the Apache License, Version 2.0 (the "License");
-//    you may not use this file except in compliance with the License.
-//    You may obtain a copy of the License at
+package field;
 
-//        http://www.apache.org/licenses/LICENSE-2.0
-
-//    Unless required by applicable law or agreed to in writing, software
-//    distributed under the License is distributed on an "AS IS" BASIS,
-//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-//    See the License for the specific language governing permissions and
-//    limitations under the License.
-//	
-//    For the full copyright and license information, please view the LICENSE
-//    file that was distributed with this source code.
-
-package bot;
 /**
  * Field class
  * 
@@ -130,13 +133,13 @@ public class Field {
 	public String getLastError() {
 		return mLastError;
 	}
-	
-	@Override
+
 	/**
 	 * Creates comma separated String with every cell.
 	 * @param args : 
 	 * @return : String
 	 */
+	@Override
 	public String toString() {
 		String r = "";
 		int counter = 0;
@@ -158,9 +161,9 @@ public class Field {
 	 */
 	public boolean isFull() {
 		for (int x = 0; x < mCols; x++)
-		  for (int y = 0; y < mRows; y++)
-		    if (mBoard[x][y] == 0)
-		      return false; // At least one cell is not filled
+		    for (int y = 0; y < mRows; y++)
+		        if (mBoard[x][y] == 0)
+		            return false; // At least one cell is not filled
 		// All cells are filled
 		return true;
 	}
