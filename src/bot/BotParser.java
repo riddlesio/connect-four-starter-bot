@@ -70,7 +70,7 @@ public class BotParser {
                 }
             } else if(parts[0].equals("update")) { /* new field data */
                 if (parts[2].equals("field")) {
-                    String data = parts[3];
+                    String data = parts[6];
                     mField.parseFromString(data); /* Parse Field with data */
                 }
             } else if(parts[0].equals("action")) {
