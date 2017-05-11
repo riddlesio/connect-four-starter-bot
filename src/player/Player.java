@@ -17,35 +17,24 @@
  *     file that was distributed with this source code.
  */
 
-package bot;
-
-import java.util.Random;
-
-import field.Field;
+package player;
 
 /**
- * bot.BotStarter
- * 
- * Magic happens here. You should edit this file, or more specifically
- * the doMove() method to make your bot do more than random moves.
- * 
- * @author Jim van Eeden <jim@riddles.io>, Joost de Meij <joost@riddles.io>
+ * player.Player
+ *
+ * Stores all information about a player
+ *
+ * @author Jim van Eeden - jim@riddles.io
  */
+public class Player {
 
-public class BotStarter {
+    private String name;
 
-     /**
-      * Makes a turn. Edit this method to make your bot smarter.
-      * @return The column where the turn was made.
-      */
-     public int doMove(BotState state) {
-         Field field = state.getField();
-         int move = new Random().nextInt(field.getWidth());
-         return move;
-     }
-     
- 	public static void main(String[] args) {
- 		BotParser parser = new BotParser(new BotStarter());
- 		parser.run();
- 	}
- }
+    public Player(String playerName) {
+        this.name = playerName;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+}
