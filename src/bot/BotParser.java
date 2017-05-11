@@ -104,10 +104,10 @@ public class BotParser {
                     int myId = Integer.parseInt(value);
                     this.currentState.getField().setMyId(myId);
                     break;
-                case "field_columns":
+                case "field_width":
                     this.currentState.getField().setWidth(Integer.parseInt(value));
                     break;
-                case "field_rows":
+                case "field_height":
                     this.currentState.getField().setHeight(Integer.parseInt(value));
                     break;
                 case "max_rounds":
